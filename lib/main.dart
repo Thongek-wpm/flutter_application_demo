@@ -7,7 +7,6 @@ void main() {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        primaryColor: Colors.lightGreen,
         fontFamily: 'DOMII',
       ),
       home: const LoginUi(),

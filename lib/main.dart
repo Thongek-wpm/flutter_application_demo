@@ -8,7 +8,7 @@ void main() {
       theme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: Colors.lightGreen,
-        fontFamily: 'assets/fonts/Pixels.ttf',
+        fontFamily: 'DOMII',
       ),
       home: const LoginUi(),
     ),

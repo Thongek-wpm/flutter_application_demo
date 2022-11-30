@@ -3,9 +3,14 @@ import 'package:flutter_application_demo/screens/login_ui.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginUi(),
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primaryColor: Colors.lightGreen,
+        fontFamily: 'assets/fonts/Pixels.ttf',
+      ),
+      home: const LoginUi(),
     ),
   );
 }

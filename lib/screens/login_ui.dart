@@ -60,7 +60,7 @@ class _LoginUiState extends State<LoginUi> {
                   horizontal: 30,
                   vertical: 5,
                 ),
-                child: TextField(
+                child: TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
@@ -89,7 +89,7 @@ class _LoginUiState extends State<LoginUi> {
                   horizontal: 30,
                   vertical: 5,
                 ),
-                child: TextField(
+                child: TextFormField(
                   obscureText: true,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),

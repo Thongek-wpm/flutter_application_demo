@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_demo/screens/Register_ui.dart';
 import 'package:flutter_application_demo/screens/login_ui.dart';
 
 void main() {
@@ -6,10 +7,9 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        brightness: Brightness.dark,
         fontFamily: 'DOMII',
       ),
-      home: const LoginUi(),
+      home: const RegisterUi(),
     ),
   );
 }

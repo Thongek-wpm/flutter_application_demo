@@ -6,7 +6,7 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'HomemadeApple',
+        fontFamily: 'k2d.ttf',
       ),
       home: const RegisterUi(),
     ),

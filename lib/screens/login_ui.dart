@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_demo/screens/register_ui.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 class LoginUi extends StatefulWidget {
   const LoginUi({super.key});

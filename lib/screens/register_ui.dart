@@ -139,7 +139,21 @@ class _RegisterUiState extends State<RegisterUi> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              //children: [],
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Register'),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 5,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Cancel'),
+                  ),
+                )
+              ],
             ),
           ],
         ),

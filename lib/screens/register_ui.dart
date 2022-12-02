@@ -20,7 +20,7 @@ class _RegisterUiState extends State<RegisterUi> {
       email: '',
       password: '',
       fullName: '',
-      number: '',
+      phone: '',
     );
     return Scaffold(
       body: SingleChildScrollView(
@@ -90,6 +90,19 @@ class _RegisterUiState extends State<RegisterUi> {
                     vertical: 5,
                   ),
                   child: TextFormField(
+                    validator: MultiValidator(
+                      [
+                        RequiredValidator(
+                          errorText: 'you enter your E-mail',
+                        ),
+                        EmailValidator(
+                          errorText: 'Your email format is invalid.',
+                        )
+                      ],
+                    ),
+                    onSaved: (String? email) {
+                      profile.email = email!;
+                    },
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -116,6 +129,11 @@ class _RegisterUiState extends State<RegisterUi> {
                     vertical: 5,
                   ),
                   child: TextFormField(
+                    validator:
+                        RequiredValidator(errorText: 'you enter password'),
+                    onSaved: (String? password) {
+                      profile.password = password!;
+                    },
                     obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -141,7 +159,12 @@ class _RegisterUiState extends State<RegisterUi> {
                     horizontal: 30,
                     vertical: 5,
                   ),
-                  child: TextField(
+                  child: TextFormField(
+                    validator:
+                        RequiredValidator(errorText: 'you enter number phone'),
+                    onSaved: (String? phone) {
+                      profile.phone = phone!;
+                    },
                     keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, duplicate_ignore
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_demo/screens/register_ui.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginUi extends StatefulWidget {
@@ -20,7 +21,7 @@ class _LoginUiState extends State<LoginUi> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(40),
               child: Center(
                 child: Image.asset(
                   'assets/image/coffee-icon.png',
@@ -119,7 +120,14 @@ class _LoginUiState extends State<LoginUi> {
                     left: 5,
                   ),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RegisterUi(),
+                        ),
+                      );
+                    },
                     child: Text(
                       "REGISTER",
                       style: TextStyle(

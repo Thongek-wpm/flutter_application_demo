@@ -148,7 +148,9 @@ class _RegisterUiState extends State<RegisterUi> {
                     left: 5,
                   ),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: Text('Cancel'),
                   ),
                 )

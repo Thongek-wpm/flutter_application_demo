@@ -1,7 +1,11 @@
 // ignore_for_file: prefer_const_constructors, file_names
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_demo/model/profile.dart';
+import 'package:flutter_application_demo/screens/login_ui.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
@@ -22,6 +26,8 @@ class _RegisterUiState extends State<RegisterUi> {
       fullName: '',
       phone: '',
     );
+    // ignore: unused_local_variable
+    final Future<FirebaseApp> firebase = Firebase.initializeApp();
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
@@ -178,7 +184,49 @@ class _RegisterUiState extends State<RegisterUi> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+                        try {
+                          await FirebaseAuth.instance
+                              .createUserWithEmailAndPassword(
+                            email: profile.email,
+                            password: profile.password,
+                          )
+                              .then((value) {
+                            formKey.currentState!.reset();
+                            Fluttertoast.showToast(
+                              msg: 'Your registerd',
+                              gravity: ToastGravity.CENTER,
+                            );
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const LoginUi();
+                                },
+                              ),
+                            );
+                          });
+                        } on FirebaseAuthException catch (e) {
+                          // ignore: unused_local_variable
+                          String? message;
+                          if (e.message == 'email-already-in-use') {
+                            message =
+                                "This email address is already, Sorry should you change e-mail !!";
+                          } else if (e.code == 'weak-password') {
+                            message =
+                                'Sorry your password should be at least 6 characters!!';
+                          } else {
+                            e.message;
+                          }
+                          Fluttertoast.showToast(
+                            msg: message!,
+                            gravity: ToastGravity.CENTER,
+                          );
+                        }
+                      }
+                    },
                     child: Text('Register'),
                   ),
                   Padding(
@@ -187,6 +235,7 @@ class _RegisterUiState extends State<RegisterUi> {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
+                        formKey.currentState!.reset();
                         Navigator.pop(context);
                       },
                       child: Text('Cancel'),

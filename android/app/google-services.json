@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "871566984375",
+    "project_id": "flutter-databast-demo",
+    "storage_bucket": "flutter-databast-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871566984375:android:aa4a20e71a4782999f7932",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "871566984375-pr6ijpb0p284f5494dod8t22k376ulr0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZaQpvo8BgiKhe0o4PnE5sdQSBDpLFRcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "871566984375-pr6ijpb0p284f5494dod8t22k376ulr0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

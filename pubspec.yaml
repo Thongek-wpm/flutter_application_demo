@@ -40,6 +40,9 @@ dependencies:
   google_fonts: ^3.0.1
   path_provider: ^2.0.11
   form_field_validator: ^1.1.0
+  firebase_core: ^2.3.0
+  firebase_auth: ^4.1.5
+  fluttertoast: ^8.1.1
 
 dev_dependencies:
   flutter_test:

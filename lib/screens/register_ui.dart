@@ -14,21 +14,15 @@ class _RegisterUiState extends State<RegisterUi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.arrow_back_ios),
-        ),
-        title: const Text('Register Page'),
-        centerTitle: true,
-        backgroundColor: Colors.grey,
-      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           // ignore: prefer_const_literals_to_create_immutables
           children: [
+            SizedBox(
+              height: 30,
+            ),
             Padding(
               padding: EdgeInsets.all(20),
               child: Text(
@@ -68,7 +62,7 @@ class _RegisterUiState extends State<RegisterUi> {
             Padding(
               padding: EdgeInsets.all(10),
               child: Text(
-                'E-mail',
+                'Password',
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
@@ -90,6 +84,62 @@ class _RegisterUiState extends State<RegisterUi> {
                   ),
                 ),
               ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                'Password',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30,
+                  vertical: 5,
+                ),
+                child: TextFormField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    label: Icon(FontAwesomeIcons.key),
+                    hintText: 'Enter Password',
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                'Number Phone',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30,
+                  vertical: 5,
+                ),
+                child: TextField(
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    label: Icon(FontAwesomeIcons.phone),
+                    hintText: 'Enter NumberPhone',
+                  ),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              //children: [],
             ),
           ],
         ),

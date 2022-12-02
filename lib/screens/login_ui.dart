@@ -20,15 +20,13 @@ class _LoginUiState extends State<LoginUi> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(
-                left: 140,
-                bottom: 20,
-                top: 100,
-              ),
-              child: Image.asset(
-                'assets/image/Targaryen-icon.png',
-                height: 150,
-                width: 150,
+              padding: EdgeInsets.all(20),
+              child: Center(
+                child: Image.asset(
+                  'assets/image/coffee-icon.png',
+                  height: 150,
+                  width: 150,
+                ),
               ),
             ),
             Padding(

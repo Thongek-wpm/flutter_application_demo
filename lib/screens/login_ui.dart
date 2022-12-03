@@ -8,7 +8,6 @@ import 'package:flutter_application_demo/model/profile.dart';
 import 'package:flutter_application_demo/screens/home_ui.dart';
 import 'package:flutter_application_demo/screens/register_ui.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -45,17 +44,6 @@ class _LoginUiState extends State<LoginUi> {
         sp.setString('phone', data['phone']);
       }
     }
-  }
-
-  Future<UserCredential> signInWithGoogle() async {
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser!.authentication;
-    final Credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth!.accessToken,
-      idToken: googleAuth.idToken,
-    );
-    return await FirebaseAuth.instance.signInWithCredential(Credential);
   }
 
   @override

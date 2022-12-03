@@ -1,3 +1,4 @@
+// ignore_for_file: await_only_futures
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_application_demo/screens/register_ui.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginUi extends StatefulWidget {
@@ -43,7 +45,17 @@ class _LoginUiState extends State<LoginUi> {
         sp.setString('phone', data['phone']);
       }
     }
-    super.initState();
+  }
+
+  Future<UserCredential> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser!.authentication;
+    final Credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth!.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    return await FirebaseAuth.instance.signInWithCredential(Credential);
   }
 
   @override
@@ -244,8 +256,25 @@ class _LoginUiState extends State<LoginUi> {
                     Padding(
                       padding: EdgeInsets.only(),
                       child: IconButton(
-                        onPressed: () {
+                        onPressed: () async {
+                          var user = await signInWithGoogle();
+                          if (user.user != null) {
+                            // ignore: use_build_context_synchronously
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomeUi(),
+                              ),
+                              (route) => true,
+                            ).then((value) {
+                              Fluttertoast.showToast(
+                                msg: "Welcome to Demo App ",
+                                gravity: ToastGravity.CENTER,
+                              );
+                            });
+                          }
                         },
+                        // ignore: prefer_const_constructors
                         icon: Icon(
                           FontAwesomeIcons.googlePlus,
                           size: 35,

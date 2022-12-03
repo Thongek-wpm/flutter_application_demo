@@ -170,6 +170,10 @@ class _LoginUiState extends State<LoginUi> {
                             password: profile.email,
                           )
                               .then((value) {
+                            Fluttertoast.showToast(
+                              msg: 'Wellcome to Demo App',
+                              gravity: ToastGravity.CENTER,
+                            );
                             formKey.currentState!.reset();
                             Navigator.pushReplacement(
                               context,

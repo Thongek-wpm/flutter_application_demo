@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_demo/model/profile.dart';
-import 'package:flutter_application_demo/model/signin.dart';
 import 'package:flutter_application_demo/screens/home_ui.dart';
 import 'package:flutter_application_demo/screens/register_ui.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -241,18 +240,13 @@ class _LoginUiState extends State<LoginUi> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.all(
-                      150,
+                  Text(
+                    'Ver.Demo',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
                     ),
-                    child: Text(
-                      'Ver.Demo',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  )
+                  ),
                 ],
               )
             ],

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, file_names, await_only_futures
+// ignore_for_file: prefer_const_constructors, file_names, await_only_futures, unused_local_variable, duplicate_ignore
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,8 +29,10 @@ class _RegisterUiState extends State<RegisterUi> {
     );
     // ignore: unused_local_variable
     final Future<FirebaseApp> firebase = Firebase.initializeApp();
+    CollectionReference profilesCollection =
+        FirebaseFirestore.instance.collection('profiles');
     return FutureBuilder(
-        future: firebase,
+        future: Firebase.initializeApp(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Scaffold(
@@ -200,6 +202,12 @@ class _RegisterUiState extends State<RegisterUi> {
                             onPressed: () async {
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
+                                profilesCollection.add({
+                                  "fullName": profile.fullName,
+                                  "email": profile.email,
+                                  "phone": profile.phone
+                                });
+                                formKey.currentState!.reset();
                               }
                               try {
                                 await FirebaseAuth.instance

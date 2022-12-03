@@ -1,10 +1,16 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, duplicate_ignore
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_demo/model/profile.dart';
+import 'package:flutter_application_demo/screens/home_ui.dart';
 import 'package:flutter_application_demo/screens/register_ui.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginUi extends StatefulWidget {
   const LoginUi({super.key});
@@ -21,6 +27,24 @@ class _LoginUiState extends State<LoginUi> {
     fullName: '',
     phone: '',
   );
+  final Future<FirebaseApp> firebase = Firebase.initializeApp();
+  Future saveLoginTypeToSP(String profile) async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    var collection = FirebaseFirestore.instance.collection('profiles');
+    var querySnapshot = await collection.get();
+    for (var doc in querySnapshot.docs) {
+      Map<String, dynamic> data = doc.data();
+      var email = data['email']; // <-- Retrieving the value.
+      if (email == email) {
+        String docId = doc.id;
+        sp.setString('userId', docId);
+        sp.setString('email', email);
+        sp.setString('fullName', data['fullName']);
+        sp.setString('phone', data['phone']);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,7 +159,35 @@ class _LoginUiState extends State<LoginUi> {
                       left: 0.1,
                     ),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
+                        }
+                        try {
+                          await FirebaseAuth.instance
+                              .signInWithEmailAndPassword(
+                            email: profile.email,
+                            password: profile.email,
+                          )
+                              .then((value) {
+                            formKey.currentState!.reset();
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const HomeUi();
+                                },
+                              ),
+                            );
+                          });
+                        } on FirebaseAuthException catch (e) {
+                          Fluttertoast.showToast(
+                            msg: e.message!,
+                            gravity: ToastGravity.CENTER,
+                          );
+                          formKey.currentState!.reset();
+                        }
+                      },
                       child: Text(
                         "LOGIN",
                         style: TextStyle(

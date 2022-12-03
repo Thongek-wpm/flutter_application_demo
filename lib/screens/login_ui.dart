@@ -9,7 +9,6 @@ import 'package:flutter_application_demo/screens/home_ui.dart';
 import 'package:flutter_application_demo/screens/register_ui.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginUi extends StatefulWidget {
@@ -57,7 +56,7 @@ class _LoginUiState extends State<LoginUi> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.all(40),
+                padding: const EdgeInsets.all(40),
                 child: Center(
                   child: Image.asset(
                     'assets/image/coffee-icon.png',
@@ -66,7 +65,7 @@ class _LoginUiState extends State<LoginUi> {
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Text(
                   'LOGIN ACCOUNT',
@@ -76,7 +75,7 @@ class _LoginUiState extends State<LoginUi> {
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(
                   left: 20,
                   bottom: 0.0,
@@ -91,7 +90,7 @@ class _LoginUiState extends State<LoginUi> {
               ),
               SizedBox(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 30,
                     vertical: 5,
                   ),
@@ -110,7 +109,7 @@ class _LoginUiState extends State<LoginUi> {
                       profile.email = email!;
                     },
                     keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Icon(Icons.email),
                       hintText: 'Enter E-mail',
@@ -118,7 +117,7 @@ class _LoginUiState extends State<LoginUi> {
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(
                   left: 20,
                   bottom: 0.0,
@@ -133,7 +132,7 @@ class _LoginUiState extends State<LoginUi> {
               ),
               SizedBox(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 30,
                     vertical: 5,
                   ),
@@ -144,7 +143,7 @@ class _LoginUiState extends State<LoginUi> {
                       profile.password = password!;
                     },
                     obscureText: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Icon(Icons.key),
                       hintText: 'Enter Password',
@@ -156,7 +155,7 @@ class _LoginUiState extends State<LoginUi> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       left: 0.1,
                     ),
                     child: ElevatedButton(
@@ -193,7 +192,7 @@ class _LoginUiState extends State<LoginUi> {
                           formKey.currentState!.reset();
                         }
                       },
-                      child: Text(
+                      child: const Text(
                         "LOGIN",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -202,7 +201,7 @@ class _LoginUiState extends State<LoginUi> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       left: 5,
                     ),
                     child: ElevatedButton(
@@ -210,13 +209,13 @@ class _LoginUiState extends State<LoginUi> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => RegisterUi(),
+                            builder: (context) => const RegisterUi(),
                           ),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         "REGISTER",
-                        style: TextStyle(
+                        style:  TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -227,7 +226,7 @@ class _LoginUiState extends State<LoginUi> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
+                children: const [
                   SizedBox(height: 300),
                   Text(
                     'Ver.Demo',

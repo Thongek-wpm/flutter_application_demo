@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_demo/model/profile.dart';
+import 'package:flutter_application_demo/model/signin.dart';
 import 'package:flutter_application_demo/screens/home_ui.dart';
 import 'package:flutter_application_demo/screens/register_ui.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -236,61 +237,6 @@ class _LoginUiState extends State<LoginUi> {
                   ),
                 ],
               ),
-              Padding(
-                padding: EdgeInsets.all(15),
-                child: Center(
-                  child: Text(
-                    'OR',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 0.1),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(),
-                      child: IconButton(
-                        onPressed: () async {
-                          var user = await signInWithGoogle();
-                          if (user.user!.uid == null) {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return const HomeUi();
-                                },
-                              ),
-                            );
-                          }
-                        },
-                        // ignore: prefer_const_constructors
-                        icon: Icon(
-                          FontAwesomeIcons.googlePlus,
-                          size: 35,
-                          color: Colors.red,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          FontAwesomeIcons.facebook,
-                          size: 35,
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -301,7 +247,10 @@ class _LoginUiState extends State<LoginUi> {
                     ),
                     child: Text(
                       'Ver.Demo',
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   )
                 ],

@@ -291,6 +291,21 @@ class _LoginUiState extends State<LoginUi> {
                   ],
                 ),
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(
+                      150,
+                    ),
+                    child: Text(
+                      'Ver.Demo',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  )
+                ],
+              )
             ],
           ),
         ),

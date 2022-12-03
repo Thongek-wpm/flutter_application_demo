@@ -228,6 +228,7 @@ class _LoginUiState extends State<LoginUi> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
+                  SizedBox(height: 300),
                   Text(
                     'Ver.Demo',
                     style: TextStyle(

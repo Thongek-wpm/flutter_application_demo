@@ -171,7 +171,7 @@ class _LoginUiState extends State<LoginUi> {
                           )
                               .then((value) {
                             Fluttertoast.showToast(
-                              msg: 'Wellcome to Demo App',
+                              msg: "Welcome to Demo App ",
                               gravity: ToastGravity.CENTER,
                             );
                             formKey.currentState!.reset();

@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, duplicate_ignore
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,6 +26,7 @@ class _LoginUiState extends State<LoginUi> {
     fullName: '',
     phone: '',
   );
+
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
   Future saveLoginTypeToSP(String profile) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
@@ -43,6 +43,7 @@ class _LoginUiState extends State<LoginUi> {
         sp.setString('phone', data['phone']);
       }
     }
+    super.initState();
   }
 
   @override
@@ -243,7 +244,8 @@ class _LoginUiState extends State<LoginUi> {
                     Padding(
                       padding: EdgeInsets.only(),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                        },
                         icon: Icon(
                           FontAwesomeIcons.googlePlus,
                           size: 35,

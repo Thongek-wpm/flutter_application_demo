@@ -216,7 +216,6 @@ class _RegisterUiState extends State<RegisterUi> {
                                   password: profile.email,
                                 )
                                     .then((value) {
-                                  formKey.currentState!.reset();
                                   Fluttertoast.showToast(
                                     msg: 'Your Registered',
                                     gravity: ToastGravity.TOP,

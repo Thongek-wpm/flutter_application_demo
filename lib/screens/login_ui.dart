@@ -258,20 +258,15 @@ class _LoginUiState extends State<LoginUi> {
                       child: IconButton(
                         onPressed: () async {
                           var user = await signInWithGoogle();
-                          if (user.user != null) {
-                            // ignore: use_build_context_synchronously
-                            Navigator.pushAndRemoveUntil(
+                          if (user.user!.uid == null) {
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => HomeUi(),
+                                builder: (context) {
+                                  return const HomeUi();
+                                },
                               ),
-                              (route) => true,
-                            ).then((value) {
-                              Fluttertoast.showToast(
-                                msg: "Welcome to Demo App ",
-                                gravity: ToastGravity.CENTER,
-                              );
-                            });
+                            );
                           }
                         },
                         // ignore: prefer_const_constructors

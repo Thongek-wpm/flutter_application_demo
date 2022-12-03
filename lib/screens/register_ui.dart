@@ -200,7 +200,6 @@ class _RegisterUiState extends State<RegisterUi> {
                             onPressed: () async {
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
-                                formKey.currentState!.reset();
                               }
                               try {
                                 await FirebaseAuth.instance

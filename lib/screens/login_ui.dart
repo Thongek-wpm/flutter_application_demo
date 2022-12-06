@@ -167,7 +167,7 @@ class _LoginUiState extends State<LoginUi> {
                           await FirebaseAuth.instance
                               .signInWithEmailAndPassword(
                             email: profile.email,
-                            password: profile.email,
+                            password: profile.password,
                           )
                               .then((value) {
                             Fluttertoast.showToast(
@@ -215,7 +215,7 @@ class _LoginUiState extends State<LoginUi> {
                       },
                       child: const Text(
                         "REGISTER",
-                        style:  TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),

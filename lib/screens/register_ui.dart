@@ -205,7 +205,7 @@ class _RegisterUiState extends State<RegisterUi> {
                                 profilesCollection.add({
                                   "fullName": profile.fullName,
                                   "email": profile.email,
-                                  "phone": profile.phone
+                                  "phone": profile.phone,
                                 });
                                 formKey.currentState!.reset();
                               }
@@ -213,7 +213,7 @@ class _RegisterUiState extends State<RegisterUi> {
                                 await FirebaseAuth.instance
                                     .createUserWithEmailAndPassword(
                                   email: profile.email,
-                                  password: profile.email,
+                                  password: profile.password,
                                 )
                                     .then((value) {
                                   Fluttertoast.showToast(

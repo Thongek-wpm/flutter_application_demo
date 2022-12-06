@@ -28,6 +28,7 @@ class _HomeUiState extends State<HomeUi> {
         sp.setString('email', email);
         sp.setString('fullName', data['fullName']);
         sp.setString('phone', data['phone']);
+        sp.setString('password', data['password']);
       }
     }
   }
@@ -36,7 +37,6 @@ class _HomeUiState extends State<HomeUi> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
         actions: [
           IconButton(
             onPressed: () {},
@@ -151,6 +151,27 @@ class _HomeUiState extends State<HomeUi> {
             ),
           ],
         ),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 30,
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  label: Icon(Icons.search),
+                  hintText: 'search',
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

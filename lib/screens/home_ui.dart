@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_demo/screens/login_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeUi extends StatefulWidget {
@@ -48,11 +49,36 @@ class _HomeUiState extends State<HomeUi> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(auth.currentUser!.email!),
-            ),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/image/background-blue.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(right: 30),
+                      child: ClipRRect(
+                        child: Image.asset(
+                          'assets/image/camera-icon.png',
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      auth.currentUser!.email!,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                )),
             ListTile(
               // ignore: prefer_const_constructors
               leading: Icon(Icons.home),
@@ -100,8 +126,26 @@ class _HomeUiState extends State<HomeUi> {
               padding: EdgeInsets.all(40),
               child: ListTile(
                 title: ElevatedButton(
-                  onPressed: () {},
-                  child: Text('LOGOUT',),
+                  onPressed: () {
+                    auth.signOut().then(
+                          (value) => {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return LoginUi();
+                                },
+                              ),
+                            ),
+                          },
+                        );
+                  },
+                  child: Text(
+                    'LOGOUT',
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.red),
+                  ),
                 ),
               ),
             ),

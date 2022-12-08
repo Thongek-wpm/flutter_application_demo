@@ -252,6 +252,7 @@ class _LoginUiState extends State<LoginUi> {
           ),
         );
       }
+      ;
       return Scaffold(
         body: Center(
           child: CircularProgressIndicator(),

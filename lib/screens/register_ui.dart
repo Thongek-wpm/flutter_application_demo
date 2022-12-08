@@ -151,7 +151,8 @@ class _RegisterUiState extends State<RegisterUi> {
                           ),
                           child: TextFormField(
                             validator: RequiredValidator(
-                                errorText: 'you enter password'),
+                              errorText: 'you enter password',
+                            ),
                             onSaved: (String? password) {
                               profile.password = password!;
                             },

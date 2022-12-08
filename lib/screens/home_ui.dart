@@ -14,14 +14,16 @@ class HomeUi extends StatefulWidget {
 
 class _HomeUiState extends State<HomeUi> {
   final auth = FirebaseAuth.instance;
+  //firebaseAuth login
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
   Future saveLoginTypeToSP(String profile) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     var collection = FirebaseFirestore.instance.collection('profiles');
     var querySnapshot = await collection.get();
+    // shared preferences
     for (var doc in querySnapshot.docs) {
       Map<String, dynamic> data = doc.data();
-      var email = data['email']; // <-- Retrieving the value.
+      var email = data['email'];
       if (email == email) {
         String docId = doc.id;
         sp.setString('userId', docId);

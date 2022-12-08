@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -158,15 +160,20 @@ class _HomeUiState extends State<HomeUi> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          // ignore: prefer_const_constructors, duplicate_ignore
           SizedBox(
+            // ignore: prefer_const_constructors
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 15,
                 vertical: 30,
               ),
+              // ignore: prefer_const_constructors
               child: TextField(
                 decoration: InputDecoration(
+                  // ignore: prefer_const_constructors
                   border: OutlineInputBorder(),
+                  // ignore: prefer_const_constructors
                   label: Icon(Icons.search),
                   hintText: 'search',
                 ),

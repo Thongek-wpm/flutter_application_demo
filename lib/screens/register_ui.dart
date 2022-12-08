@@ -32,7 +32,6 @@ class _RegisterUiState extends State<RegisterUi> {
     CollectionReference profilesCollection =
         FirebaseFirestore.instance.collection('profiles');
     return FutureBuilder(
-        future: Firebase.initializeApp(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Scaffold(
@@ -273,11 +272,11 @@ class _RegisterUiState extends State<RegisterUi> {
               ),
             );
           }
-          return Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        });
+            return Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          });
   }
 }

@@ -40,12 +40,26 @@ class _HomeUiState extends State<HomeUi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.account_circle),
-          )
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        // ignore: prefer_const_literals_to_create_immutables
+        children: [
+          SizedBox(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 40,
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  label: Icon(Icons.search),
+                  hintText: 'search',
+                ),
+              ),
+            ),
+          ),
         ],
       ),
       drawer: Drawer(
@@ -84,45 +98,35 @@ class _HomeUiState extends State<HomeUi> {
                   ],
                 )),
             ListTile(
-              // ignore: prefer_const_constructors
+              onTap: () {},
               leading: Icon(Icons.home),
-              title: TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Home',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+              title: Text(
+                'Home',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             ListTile(
+              onTap: () {},
               leading: Icon(Icons.list),
-              title: TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Recommend',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+              title: Text(
+                'Recommend',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             ListTile(
+              onTap: () {},
               leading: Icon(Icons.account_circle),
-              title: TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Profiles',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+              title: Text(
+                'Profiles',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -144,43 +148,17 @@ class _HomeUiState extends State<HomeUi> {
                           },
                         );
                   },
-                  child: Text(
-                    'LOGOUT',
-                  ),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.red),
+                  ),
+                  child: Text(
+                    'LOGOUT',
                   ),
                 ),
               ),
             ),
           ],
         ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          // ignore: prefer_const_constructors, duplicate_ignore
-          SizedBox(
-            // ignore: prefer_const_constructors
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-                vertical: 30,
-              ),
-              // ignore: prefer_const_constructors
-              child: TextField(
-                decoration: InputDecoration(
-                  // ignore: prefer_const_constructors
-                  border: OutlineInputBorder(),
-                  // ignore: prefer_const_constructors
-                  label: Icon(Icons.search),
-                  hintText: 'search',
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

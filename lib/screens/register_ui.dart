@@ -28,17 +28,7 @@ class _RegisterUiState extends State<RegisterUi> {
     );
     CollectionReference profilesCollection =
         FirebaseFirestore.instance.collection('profiles');
-    return FutureBuilder(
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return Scaffold(
-            body: Center(
-              child: Text("${snapshot.error}"),
-            ),
-          );
-        }
-        if (snapshot.connectionState == ConnectionState.done) {
-          return Scaffold(
+    return  Scaffold(
             body: SingleChildScrollView(
               child: Form(
                 key: formKey,
@@ -269,12 +259,4 @@ class _RegisterUiState extends State<RegisterUi> {
             ),
           );
         }
-        return const Scaffold(
-          body: Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
-      },
-    );
-  }
-}
+      }

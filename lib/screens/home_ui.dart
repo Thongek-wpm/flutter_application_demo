@@ -57,7 +57,6 @@ class _HomeUiState extends State<HomeUi> {
                   label: Icon(Icons.search),
                   hintText: 'search',
                 ),
-                cursorHeight: 30,
               ),
             ),
           ),

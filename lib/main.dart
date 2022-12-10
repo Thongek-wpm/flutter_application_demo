@@ -8,11 +8,7 @@ void main() async {
   await Firebase.initializeApp();
   runApp(
     MaterialApp(
-      title: '',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'k2d.ttf',
-      ),
       home: const LoginUi(),
     ),
   );

@@ -40,63 +40,52 @@ class _HomeUiState extends State<HomeUi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        // ignore: prefer_const_literals_to_create_immutables
-        children: [
-          SizedBox(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 40,
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  label: Icon(Icons.search),
-                  hintText: 'search',
-                ),
-              ),
-            ),
-          ),
+      backgroundColor: Color.fromARGB(235, 245, 244, 249),
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(0, 0, 0, 0),
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.account_circle),
+          )
         ],
       ),
       drawer: Drawer(
         child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
+          children: [
             DrawerHeader(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/image/background-blue.jpg'),
-                    fit: BoxFit.cover,
-                  ),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/image/background-blue.jpg'),
+                  fit: BoxFit.cover,
                 ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(right: 30),
-                      child: ClipRRect(
-                        child: Image.asset(
-                          'assets/image/camera-icon.png',
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
-                        ),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 30),
+                    child: ClipRRect(
+                      child: Image.asset(
+                        'assets/image/camera-icon.png',
+                        width: 50,
+                        height: 50,
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    Text(
-                      auth.currentUser!.email!,
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  ),
+                  Text(
+                    auth.currentUser!.email!,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
-                )),
+                  ),
+                ],
+              ),
+            ),
             ListTile(
               onTap: () {},
               leading: Icon(Icons.home),
@@ -159,6 +148,32 @@ class _HomeUiState extends State<HomeUi> {
             ),
           ],
         ),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        // ignore: prefer_const_literals_to_create_immutables
+        children: [
+          SizedBox(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              ),
+              child: SizedBox(
+                height: 30,
+                width: 450,
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    icon: Icon(Icons.search),
+                    labelText: 'search',
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

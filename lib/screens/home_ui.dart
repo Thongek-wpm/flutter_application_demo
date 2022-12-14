@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, depend_on_referenced_packages
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -35,7 +35,7 @@ class _HomeUiState extends State<HomeUi> {
         sp.setString('password', data['password']);
       }
     }
-  }
+  } // Make a GET request
 
   @override
   Widget build(BuildContext context) {
@@ -157,8 +157,7 @@ class _HomeUiState extends State<HomeUi> {
           SizedBox(
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 10,
+                horizontal: 30,
               ),
               child: SizedBox(
                 height: 30,

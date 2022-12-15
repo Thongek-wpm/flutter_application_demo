@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_demo/model/api.dart';
 import 'package:flutter_application_demo/screens/login_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -35,7 +36,15 @@ class _HomeUiState extends State<HomeUi> {
         sp.setString('password', data['password']);
       }
     }
-  } // Make a GET request
+  }
+
+  @override
+  void initState() {
+    // ignore: todo
+    // TODO: implement initState
+    WebApiService().feed();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -150,30 +159,51 @@ class _HomeUiState extends State<HomeUi> {
         ),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        // ignore: prefer_const_literals_to_create_immutables
-        children: [
-          SizedBox(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 30,
-              ),
-              child: SizedBox(
-                height: 30,
-                width: 450,
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    icon: Icon(Icons.search),
-                    labelText: 'search',
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          // ignore: prefer_const_literals_to_create_immutables
+          children: [
+            SizedBox(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                ),
+                child: SizedBox(
+                  height: 30,
+                  width: 450,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      icon: Icon(Icons.search),
+                      labelText: 'search',
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
-      ),
+            FutureBuilder(
+                future: WebApiService().feed(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData == false) {
+                    return Text("Loading.....");
+                  }
+                  final coffee = snapshot.data;
+                  return ListView.builder(
+                    itemCount: coffee!.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(coffee[index].title),
+                            Text(coffee[index].title),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                }),
+          ]),
     );
   }
 }

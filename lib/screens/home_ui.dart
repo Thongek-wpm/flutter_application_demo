@@ -53,6 +53,21 @@ class _HomeUiState extends State<HomeUi> {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(0, 0, 0, 0),
         elevation: 0,
+        title: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
+          child: SizedBox(
+            height: 30,
+            width: 450,
+            child: TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                label: Icon(Icons.search),
+              ),
+            ),
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () {},
@@ -158,52 +173,54 @@ class _HomeUiState extends State<HomeUi> {
           ],
         ),
       ),
-      body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          // ignore: prefer_const_literals_to_create_immutables
-          children: [
-            SizedBox(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 30,
-                ),
-                child: SizedBox(
-                  height: 30,
-                  width: 450,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      icon: Icon(Icons.search),
-                      labelText: 'search',
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            FutureBuilder(
-                future: WebApiService().feed(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData == false) {
-                    return Text("Loading.....");
-                  }
-                  final coffee = snapshot.data;
-                  return ListView.builder(
-                    itemCount: coffee!.length,
-                    itemBuilder: (context, index) {
-                      return Card(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(coffee[index].title),
-                            Text(coffee[index].title),
-                          ],
-                        ),
-                      );
-                    },
-                  );
-                }),
-          ]),
+      body: Container(
+        child: FutureBuilder(
+            future: WebApiService().feed(),
+            builder: ((context, snapshot) {
+              if (snapshot.hasData == false) {
+                return Text("LOADING.....");
+              }
+              final coffee = snapshot.data;
+              return ListView.builder(
+                  itemCount: coffee!.length,
+                  itemBuilder: ((context, index) {
+                    return Card(
+                      margin: EdgeInsets.all(5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRect(
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Image.network(
+                                coffee[index].image,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            coffee[index].title,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(coffee[index].description),
+                          SizedBox(
+                            height: 5,
+                          ),
+                        ],
+                      ),
+                    );
+                  }));
+            })),
+      ),
     );
   }
 }

@@ -19,6 +19,10 @@ class _HomeUiState extends State<HomeUi> {
   final auth = FirebaseAuth.instance;
   //firebaseAuth login
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
+
+  // ignore: prefer_typing_uninitialized_variables
+  var results;
+
   Future saveLoginTypeToSP(String profile) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     var collection = FirebaseFirestore.instance.collection('profiles');
@@ -38,12 +42,19 @@ class _HomeUiState extends State<HomeUi> {
     }
   }
 
+  // ignore: prefer_typing_uninitialized_variables
+  var _coffeeFeed;
+
   @override
   void initState() {
     // ignore: todo
     // TODO: implement initState
     WebApiService().feed();
+
     super.initState();
+    setState(() {
+      _coffeeFeed = results;
+    });
   }
 
   @override
@@ -53,21 +64,6 @@ class _HomeUiState extends State<HomeUi> {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(0, 0, 0, 0),
         elevation: 0,
-        title: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 10,
-          ),
-          child: SizedBox(
-            height: 30,
-            width: 450,
-            child: TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                label: Icon(Icons.search),
-              ),
-            ),
-          ),
-        ),
         actions: [
           IconButton(
             onPressed: () {},
@@ -182,9 +178,9 @@ class _HomeUiState extends State<HomeUi> {
                   child: CircularProgressIndicator(),
                 );
               }
-              final coffee = snapshot.data;
+              final _coffeeFeed = snapshot.data;
               return ListView.builder(
-                  itemCount: coffee!.length,
+                  itemCount: _coffeeFeed!.length,
                   itemBuilder: ((context, index) {
                     return Card(
                       margin: EdgeInsets.all(5),
@@ -197,7 +193,7 @@ class _HomeUiState extends State<HomeUi> {
                               child: Align(
                                 alignment: Alignment.center,
                                 child: Image.network(
-                                  coffee[index].image,
+                                  _coffeeFeed[index].image,
                                   height: 200,
                                   width: 200,
                                   fit: BoxFit.cover,
@@ -208,7 +204,7 @@ class _HomeUiState extends State<HomeUi> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              coffee[index].title,
+                              _coffeeFeed[index].title,
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -218,7 +214,7 @@ class _HomeUiState extends State<HomeUi> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              coffee[index].description,
+                              _coffeeFeed[index].description,
                             ),
                           ),
                           TextButton(

@@ -36,4 +36,17 @@ class Coffee {
         "image": image,
         "id": id,
       };
+  late List<Map<String, dynamic>> _coffee = [];
+  void _coffeeFeed(String enteredKeyword) {
+    List<Map<String, dynamic>> results = [];
+    if (enteredKeyword.isEmpty) {
+      results = _coffee;
+    } else {
+      results = _coffee
+          .where((_coffeeFeed) => _coffeeFeed['coffee']
+              .toLowerCase()
+              .contains(enteredKeyword.toLowerCase()))
+          .toList();
+    }
+  }
 }

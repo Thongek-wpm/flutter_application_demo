@@ -43,7 +43,7 @@ class _HomeUiState extends State<HomeUi> {
   }
 
   // ignore: prefer_typing_uninitialized_variables
-  var _coffeeFeed;
+
 
   @override
   void initState() {
@@ -52,9 +52,6 @@ class _HomeUiState extends State<HomeUi> {
     WebApiService().feed();
 
     super.initState();
-    setState(() {
-      _coffeeFeed = results;
-    });
   }
 
   @override

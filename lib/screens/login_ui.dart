@@ -225,7 +225,7 @@ class _LoginUiState extends State<LoginUi> {
                 children: const [
                   SizedBox(height: 300),
                   Text(
-                    'Ver.Demo',
+                    'Version Demo',
                     style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.bold,

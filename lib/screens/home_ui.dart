@@ -44,7 +44,6 @@ class _HomeUiState extends State<HomeUi> {
 
   // ignore: prefer_typing_uninitialized_variables
 
-
   @override
   void initState() {
     // ignore: todo
@@ -57,9 +56,7 @@ class _HomeUiState extends State<HomeUi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(235, 245, 244, 249),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(0, 0, 0, 0),
         elevation: 0,
         actions: [
           IconButton(
@@ -175,9 +172,9 @@ class _HomeUiState extends State<HomeUi> {
                   child: CircularProgressIndicator(),
                 );
               }
-              final _coffeeFeed = snapshot.data;
+              final coffee = snapshot.data;
               return ListView.builder(
-                  itemCount: _coffeeFeed!.length,
+                  itemCount: coffee!.length,
                   itemBuilder: ((context, index) {
                     return Card(
                       margin: EdgeInsets.all(5),
@@ -190,7 +187,7 @@ class _HomeUiState extends State<HomeUi> {
                               child: Align(
                                 alignment: Alignment.center,
                                 child: Image.network(
-                                  _coffeeFeed[index].image,
+                                  coffee[index].image,
                                   height: 200,
                                   width: 200,
                                   fit: BoxFit.cover,
@@ -201,7 +198,7 @@ class _HomeUiState extends State<HomeUi> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              _coffeeFeed[index].title,
+                              coffee[index].title,
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -211,7 +208,7 @@ class _HomeUiState extends State<HomeUi> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              _coffeeFeed[index].description,
+                              coffee[index].description,
                             ),
                           ),
                           TextButton(

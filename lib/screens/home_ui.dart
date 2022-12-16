@@ -178,7 +178,9 @@ class _HomeUiState extends State<HomeUi> {
             future: WebApiService().feed(),
             builder: ((context, snapshot) {
               if (snapshot.hasData == false) {
-                return Text("LOADING.....");
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
               }
               final coffee = snapshot.data;
               return ListView.builder(
@@ -189,32 +191,47 @@ class _HomeUiState extends State<HomeUi> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          ClipRect(
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Image.network(
-                                coffee[index].image,
-                                fit: BoxFit.cover,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ClipRect(
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Image.network(
+                                  coffee[index].image,
+                                  height: 200,
+                                  width: 200,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            coffee[index].title,
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              coffee[index].title,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              coffee[index].description,
+                            ),
                           ),
-                          Text(coffee[index].description),
-                          SizedBox(
-                            height: 5,
-                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "LEARN MORE",
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     );

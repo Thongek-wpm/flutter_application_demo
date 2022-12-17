@@ -62,7 +62,11 @@ class _HomeUiState extends State<HomeUi> {
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.account_circle),
-          )
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.more_vert),
+          ),
         ],
       ),
       drawer: Drawer(
@@ -101,7 +105,9 @@ class _HomeUiState extends State<HomeUi> {
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+              },
               leading: Icon(Icons.home),
               title: Text(
                 'Home',
@@ -211,17 +217,6 @@ class _HomeUiState extends State<HomeUi> {
                               coffee[index].description,
                             ),
                           ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "LEARN MORE",
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
-                            ),
-                          )
                         ],
                       ),
                     );

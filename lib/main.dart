@@ -11,6 +11,7 @@ void main() async {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primaryColor: Color.fromRGBO(0, 0, 0, 00),
         fontFamily: GoogleFonts.k2d().fontFamily,
       ),
       home: const LoginUi(),

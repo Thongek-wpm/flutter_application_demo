@@ -5,7 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_demo/model/api.dart';
+
 import 'package:flutter_application_demo/screens/login_ui.dart';
+import 'package:flutter_application_demo/screens/view_api.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeUi extends StatefulWidget {
@@ -204,7 +207,7 @@ class _HomeUiState extends State<HomeUi> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              coffee[index].title,
+                              coffee[index].headtitle,
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -220,7 +223,13 @@ class _HomeUiState extends State<HomeUi> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ViewAPI(),
+                                      ));
+                                },
                                 child: Text(
                                   'LEARN MORE',
                                   style: TextStyle(

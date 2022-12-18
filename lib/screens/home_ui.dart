@@ -180,7 +180,7 @@ class _HomeUiState extends State<HomeUi> {
               }
               final coffee = snapshot.data;
               return ListView.builder(
-                  itemCount: coffee!.length,
+                  itemCount: coffee!.length = 19,
                   itemBuilder: ((context, index) {
                     return Card(
                       margin: EdgeInsets.all(5),
@@ -217,6 +217,19 @@ class _HomeUiState extends State<HomeUi> {
                               coffee[index].description,
                             ),
                           ),
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  'LEARN MORE',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black45,
+                                  ),
+                                )),
+                          )
                         ],
                       ),
                     );

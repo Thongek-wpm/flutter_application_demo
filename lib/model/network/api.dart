@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_application_demo/network/feel.dart';
+import 'package:flutter_application_demo/model/network/feel.dart';
 
 class WebApiService {
   Future<List<Coffee>> feed() async {

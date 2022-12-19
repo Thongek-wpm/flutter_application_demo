@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_demo/model/network/feel.dart';
+
+import '../network/feel.dart';
 
 class ViewAPI extends StatelessWidget {
   final Coffee coffee;
@@ -11,10 +12,13 @@ class ViewAPI extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: Icon(Icons.arrow_back_ios),
         ),
         title: Text(coffee.headtitle),
+        centerTitle: true,
       ),
     );
   }

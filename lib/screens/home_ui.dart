@@ -173,74 +173,77 @@ class _HomeUiState extends State<HomeUi> {
         ),
       ),
       body: FutureBuilder(
-            future: WebApiService().feed(),
-            builder: ((context, snapshot) {
-              if (snapshot.hasData == false) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              final coffee = snapshot.data;
-              return ListView.builder(
-                  itemCount: coffee!.length = 19,
-                  itemBuilder: ((context, index) {
-                    return Card(
-                      margin: EdgeInsets.all(5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ClipRect(
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Image.network(
-                                  coffee[index].image,
-                                  height: 200,
-                                  width: 200,
-                                  fit: BoxFit.cover,
+          future: WebApiService().feed(),
+          builder: ((context, snapshot) {
+            if (snapshot.hasData == false) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            final coffee = snapshot.data;
+            return ListView.builder(
+                itemCount: coffee!.length = 19,
+                itemBuilder: ((context, index) {
+                  return Card(
+                    margin: EdgeInsets.all(5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ClipRect(
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Image.network(
+                                coffee[index].image,
+                                height: 200,
+                                width: 200,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            coffee[index].headtitle,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            coffee[index].description,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          ViewAPI(coffee[index]),
+                                    ));
+                              },
+                              child: Text(
+                                'LEARN MORE',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black45,
                                 ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              coffee[index].headtitle,
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              coffee[index].description,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => ViewAPI(),
-                                      ));
-                                },
-                                child: Text(
-                                  'LEARN MORE',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black45,
-                                  ),
-                                )),
-                          )
-                        ],
-                      ),
-                    );
-                  }));
-            })),
-      ),
+                              )),
+                        )
+                      ],
+                    ),
+                  );
+                }));
+          })),
+    );
+  }
+}

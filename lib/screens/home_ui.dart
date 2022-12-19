@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_demo/model/api.dart';
+import 'package:flutter_application_demo/network/api.dart';
 
 import 'package:flutter_application_demo/screens/login_ui.dart';
 import 'package:flutter_application_demo/screens/view_api.dart';
@@ -172,8 +172,7 @@ class _HomeUiState extends State<HomeUi> {
           ],
         ),
       ),
-      body: Container(
-        child: FutureBuilder(
+      body: FutureBuilder(
             future: WebApiService().feed(),
             builder: ((context, snapshot) {
               if (snapshot.hasData == false) {
@@ -245,6 +244,3 @@ class _HomeUiState extends State<HomeUi> {
                   }));
             })),
       ),
-    );
-  }
-}

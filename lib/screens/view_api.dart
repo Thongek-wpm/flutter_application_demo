@@ -1,36 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_demo/model/api.dart';
-import 'package:flutter_application_demo/model/feel.dart';
+import 'package:flutter_application_demo/model/network/feel.dart';
 
-class ViewAPI extends StatefulWidget {
-  const ViewAPI({super.key});
+class ViewAPI extends StatelessWidget {
+  final Coffee coffee;
 
-  @override
-  State<ViewAPI> createState() => _ViewAPIState();
-}
+  ViewAPI(this.coffee); // ig
 
-class _ViewAPIState extends State<ViewAPI> {
-  // ignore: prefer_typing_uninitialized_variables
-
-  late Coffee coffee;
-
-  @override
-  void initState() {
-    // ignore: todo
-    // TODO: implement initState
-    WebApiService().feed();
-    super.initState();
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () {},
           icon: Icon(Icons.arrow_back_ios),
         ),
+        title: Text(coffee.headtitle),
       ),
     );
   }

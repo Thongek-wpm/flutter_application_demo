@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:flutter_application_demo/screens/view_api.dart';
+
 List<Coffee> coffeeFromJson(String str) =>
     List<Coffee>.from(json.decode(str).map((x) => Coffee.fromJson(x)));
 
@@ -36,12 +38,5 @@ class Coffee {
         "image": image,
         "id": id,
       };
-  Map<String, dynamic> coffee() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['title'] = headtitle;
-    data['image'] = image;
-    data['description'] = description;
-    return data;
-  }
+
 }

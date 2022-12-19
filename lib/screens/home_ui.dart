@@ -83,8 +83,8 @@ class _HomeUiState extends State<HomeUi> {
                 ),
               ),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 30),
@@ -100,7 +100,7 @@ class _HomeUiState extends State<HomeUi> {
                   Text(
                     auth.currentUser!.email!,
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

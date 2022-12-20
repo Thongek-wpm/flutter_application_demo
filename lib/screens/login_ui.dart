@@ -107,7 +107,7 @@ class _LoginUiState extends State<LoginUi> {
                     keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      label: Icon(Icons.email),
+                      prefixIcon: Icon(Icons.email),
                       hintText: 'Enter E-mail',
                     ),
                   ),
@@ -141,7 +141,7 @@ class _LoginUiState extends State<LoginUi> {
                     obscureText: true,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      label: Icon(Icons.key),
+                      prefixIcon: Icon(Icons.key),
                       hintText: 'Enter Password',
                     ),
                   ),

@@ -18,45 +18,46 @@ class ViewAPI extends StatelessWidget {
         ),
       ),
       body: Card(
-          margin: EdgeInsets.only(
-            top: 10,
-            bottom: 200,
-            right: 8,
-            left: 8,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(8),
-                child: Title(
-                  color: Colors.black,
-                  child: Text(
-                    coffee.headtitle,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        margin: EdgeInsets.only(
+          top: 10,
+          bottom: 200,
+          right: 8,
+          left: 8,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: Title(
+                color: Colors.black,
+                child: Text(
+                  coffee.headtitle,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: ClipRect(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Image.network(
+                    coffee.image,
+                    height: 300,
+                    width: 300,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(8),
-                child: ClipRect(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Image.network(
-                      coffee.image,
-                      height: 300,
-                      width: 300,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8),
-                child: Text(coffee.description),
-              )
-            ],
-          )),
+            ),
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: Text(coffee.description),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

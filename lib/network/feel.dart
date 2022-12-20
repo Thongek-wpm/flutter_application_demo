@@ -17,26 +17,21 @@ class Coffee {
     required this.headtitle,
     required this.description,
     required this.image,
-    required this.id,
   });
 
   final String headtitle;
   final String description;
   final String image;
-  final int id;
 
   factory Coffee.fromJson(Map<String, dynamic> json) => Coffee(
         headtitle: json["title"],
         description: json["description"],
         image: json["image"],
-        id: json["id"],
       );
 
   Map<String, dynamic> toJson() => {
         "title": headtitle,
         "description": description,
         "image": image,
-        "id": id,
       };
-
 }

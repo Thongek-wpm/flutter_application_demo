@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model/network/feel.dart';
+import '../network/feel.dart';
 
 class ViewAPI extends StatelessWidget {
   final Coffee coffee;

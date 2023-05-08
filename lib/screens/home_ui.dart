@@ -180,7 +180,7 @@ class _HomeUiState extends State<HomeUi> {
             }
             final coffee = snapshot.data;
             return ListView.builder(
-                itemCount: coffee!.length = 19,
+                itemCount: coffee?.length = 9,
                 itemBuilder: ((context, index) {
                   return Card(
                     margin: EdgeInsets.all(5),
@@ -188,23 +188,9 @@ class _HomeUiState extends State<HomeUi> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ClipRect(
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Image.network(
-                                coffee[index].image,
-                                height: 200,
-                                width: 200,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            coffee[index].headtitle,
+                            coffee![index].headtitle,
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,

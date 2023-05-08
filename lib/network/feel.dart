@@ -4,8 +4,6 @@
 
 import 'dart:convert';
 
-import 'package:flutter_application_demo/screens/view_api.dart';
-
 List<Coffee> coffeeFromJson(String str) =>
     List<Coffee>.from(json.decode(str).map((x) => Coffee.fromJson(x)));
 
